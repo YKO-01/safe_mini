@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prompt.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayakoubi <ayakoubi@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/26 18:07:56 by ayakoubi          #+#    #+#             */
+/*   Updated: 2023/05/27 12:26:47 by ayakoubi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+char	*display_prompt(void)
+{
+	char	*line;
+	char	**dir;
+	char	*str;
+	char	*prm;
+	char	*user;
+	char	path[PATH_MAX];
+	int		i;
+	
+	getcwd(path, sizeof(path));
+	user = getenv("USER");
+	dir = ft_split((char *)path, '/');
+	i = -1;
+	while (dir[++i])
+		;
+	str = ft_strjoin("\033[1;33m[", dir[i - 1]);
+	str = ft_strjoin(str, "]$ \033[0m");
+	user = ft_strjoin("\033[1;34m -> minishell@", user);
+	prm = ft_strjoin(user, " : \033[0m");
+	str = join_with_free(prm, str);
+	line = readline(str);
+	free(str);
+	add_history(line);
+	return (line);
+}
