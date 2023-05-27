@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayakoubi <ayakoubi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: osajide <osajide@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:33:01 by ayakoubi          #+#    #+#             */
-/*   Updated: 2023/05/27 12:26:29 by ayakoubi         ###   ########.fr       */
+/*   Updated: 2023/05/27 21:58:43 by osajide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void	clear_lst(t_list *lst)
 {
@@ -46,6 +47,7 @@ void	minishell(void)
 			printf("t->token = %d\n", t->data->token);
 			t = t->next;
 		}
+		// exit(0);
 		check_type_cmd(lst);
 		free(line);
 		clear_lst(lst);

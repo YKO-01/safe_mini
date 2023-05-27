@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize_redirection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayakoubi <ayakoubi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: osajide <osajide@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 00:01:48 by osajide           #+#    #+#             */
-/*   Updated: 2023/05/27 18:54:43 by ayakoubi         ###   ########.fr       */
+/*   Updated: 2023/05/27 21:27:38 by osajide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../inc/minishell.h"
 
 void	input_redirection(char *line, t_list **lst, int *pos)
 {

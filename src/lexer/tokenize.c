@@ -6,11 +6,12 @@
 /*   By: osajide <osajide@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 22:44:57 by osajide           #+#    #+#             */
-/*   Updated: 2023/05/27 20:07:11 by osajide          ###   ########.fr       */
+/*   Updated: 2023/05/27 22:13:01 by osajide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+#include <stdio.h>
 
 char	*ft_remove_char(char *s)
 {
@@ -54,6 +55,8 @@ char	*handle_quote(t_list **lst, char *line, int *pos, int ascii)
 	return (temp);
 }
 
+// ls -la || ls-la handled
+
 void	if_string(char *line, t_list **lst, int *pos)
 {
 	int		start;
@@ -69,9 +72,16 @@ void	if_string(char *line, t_list **lst, int *pos)
 	temp = ft_substr(line, start, *pos);
 	temp = ft_remove_char(temp);
 	ft_lstadd_back(lst, ft_lstnew(temp, NOTHING, WORD));
-	temp2 = ft_substr(line, *pos, *pos + 1);
-	if (temp2 && *temp2)
-		ft_lstadd_back(lst, ft_lstnew(temp2, NOTHING, PIPE));
+	if (line[*pos] != ' ' && line[*pos] != '$')
+	{
+		start = *pos;
+		while (line[*pos] && (line[*pos] == '|' || line[*pos] == '>' || line[*pos] == '<' || line[*pos] == '$'))
+			(*pos)++;
+		temp2 = ft_substr(line, start, *pos);
+		if (temp2 && *temp2)
+			ft_lstadd_back(lst, ft_lstnew(temp2, NOTHING, PIPE)); // need to handle token in different cases
+	}
+	(*pos)--;
 }
 
 void	if_single_quote(char *line, t_list **lst, int *pos)

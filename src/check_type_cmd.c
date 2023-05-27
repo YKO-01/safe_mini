@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_type_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayakoubi <ayakoubi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: osajide <osajide@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:44:16 by ayakoubi          #+#    #+#             */
-/*   Updated: 2023/05/25 17:41:23 by ayakoubi         ###   ########.fr       */
+/*   Updated: 2023/05/27 22:01:12 by osajide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../inc/minishell.h"
 
 void check_type_cmd(t_list *lst)
 {
