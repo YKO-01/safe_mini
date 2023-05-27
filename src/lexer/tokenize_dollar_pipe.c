@@ -6,7 +6,7 @@
 /*   By: osajide <osajide@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:41:17 by osajide           #+#    #+#             */
-/*   Updated: 2023/05/27 21:27:25 by osajide          ###   ########.fr       */
+/*   Updated: 2023/05/27 22:26:06 by osajide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	if_dollar_sign(char *line, t_list **lst, int *pos)
 	int		start;
 	char	*temp;
 	
-	start = *pos;
 	temp = NULL;
+	start = *pos;
 	(*pos)++;
-	while (line[*pos] && ((line[*pos] >= 'a' && line[*pos] <= 'z') || (line[*pos] >= 'A' && line[*pos] <= 'Z') || (line[*pos] >= '0' && line[*pos] <= '9')))
+	// while (line[*pos] && ((line[*pos] >= 'a' && line[*pos] <= 'z') || (line[*pos] >= 'A' && line[*pos] <= 'Z') || (line[*pos] >= '0' && line[*pos] <= '9')))
+	// 	(*pos)++;
+	while (line[*pos] && line[*pos] != ' ')
 		(*pos)++;
 	temp = ft_substr(line, start, *pos);
 	ft_lstadd_back(lst, ft_lstnew(temp, NOTHING, ENV));
