@@ -6,7 +6,7 @@
 /*   By: osajide <osajide@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 22:44:57 by osajide           #+#    #+#             */
-/*   Updated: 2023/05/27 22:13:01 by osajide          ###   ########.fr       */
+/*   Updated: 2023/05/28 16:56:05 by osajide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,19 @@ void	if_double_quote(char *line, t_list **lst, int *pos)
 		(*pos)++;
 	temp = ft_substr(line, start, *pos);
 	if (line[*pos])
-	{(*pos)++;
-	start = *pos;
-	while (line[*pos] && line[*pos]!= '$' && line[*pos] != '|' && line[*pos] != '<' && line[*pos] != '>' && line[*pos] != ' ')
+	{
 		(*pos)++;
-	temp2 = ft_substr(line, start, *pos);
-	temp3 = ft_strjoin(temp, temp2);
-	if (temp3 && *temp3)
-		ft_lstadd_back(lst, ft_lstnew(ft_remove_char(temp3), NOTHING, WORD));}
+		printf("line[*pos] = %c\n", line[*pos]);
+		start = *pos;
+		(*pos)++;
+		while (line[*pos] && line[*pos]!= '$' && line[*pos] != '|' && line[*pos] != '<' && line[*pos] != '>' && line[*pos] != ' ')
+			(*pos)++;
+		temp2 = ft_substr(line, start, *pos);
+		printf("tmep2 = %s\n", temp2);
+		temp3 = ft_strjoin(temp, temp2);
+		if (temp3 && *temp3)
+			ft_lstadd_back(lst, ft_lstnew(ft_remove_char(temp3), NOTHING, WORD));
+	}
 	else
 		ft_lstadd_back(lst, ft_lstnew(temp, IN_DQ, WORD));
 }
